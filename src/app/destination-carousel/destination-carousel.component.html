@@ -1,0 +1,35 @@
+<div class="flex items-center justify-between mt-16 bg-white border-b-black p-6 shadow-lg">
+    <div class="relative w-3/5 h-[700px]">
+      <div class="carousel-container">
+        <ng-container *ngFor="let destination of destinations; let i = index">
+          <div class="destination-card " [ngStyle]="getStyle(i)">
+            <img [src]="destination.image" [alt]="destination.name" class="w-[400px] h-[600px] object-cover rounded-3xl rounded-t-[300px]">
+            <div class="absolute bottom-28 left-24 text-white text-5xl font-bold tracking-wide destination-name">
+              {{destination.name}}
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <button (click)="prev()" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md z-40 hover:bg-gray-100 transition-colors duration-200">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button (click)="next()" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md z-40 hover:bg-gray-100 transition-colors duration-200">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+    
+    <div class="w-2/5 pl-8">
+        <div class="w-[300px]">
+            <h2 class="mb-4 font-['Source_Serif_Pro'] text-[44px] font-[300]">Not sure where to begin?</h2>
+            <p class="font-['Montserrat'] text-[18px] font-[400] mb-8">Start with these handpicked events and experiences in popular destinations.</p>
+            <a href="https://urbanaut.app/" target="_blank" rel="noopener noreferrer">
+
+            <button class="bg-blue-600 font-['Montserrat'] mt-16 text-[18px] font-[600] text-white px-20 py-3 rounded-xl text-lg hover:bg-blue-700 transition-colors duration-200">Start booking</button>
+        </a>
+        </div>
+    </div>
+  </div>

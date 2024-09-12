@@ -1,0 +1,61 @@
+<div class="container mx-auto py-4 sm:py-8 border border-b-black px-4 sm:px-0">
+    <!-- Center-aligned navigation -->
+    <div class="flex flex-wrap justify-center mt-4 sm:mt-8 space-x-2 sm:space-x-8 mb-4 sm:mb-8">
+      <ng-container *ngFor="let section of sections; let i = index">
+        <a (click)="setActiveSection(i)" 
+           [ngClass]="{'text-blue-500 underline italic': i === activeSection, 'text-gray-400': i !== activeSection}" 
+           class="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-[300] font-['Source_Serif_Pro'] cursor-pointer mb-2 sm:mb-0">
+          {{ section.title }}
+        </a>
+      </ng-container>
+    </div>
+  
+    <!-- Carousel container with full-width scroll -->
+    <div class="relative overflow-hidden mt-8 sm:mt-16 md:mt-24" [style.width.px]="containerWidth">
+      <button (click)="prev()" class="absolute left-6 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+  
+      <!-- Card Carousel -->
+      <div class="flex transition-transform duration-300 ease-in-out" [style.transform]="getTransform()">
+        <div *ngFor="let card of cards" class="flex-shrink-0 px-2 sm:px-4 h-[450px] sm:h-[500px] md:h-[550px]" [style.width.px]="cardWidth" >
+          <div class="bg-white rounded-lg shadow-md overflow-hidden relative h-[381px] sm:h-[431px] md:h-[481px]">
+            <!-- Card Image -->
+            <img [src]="card.image" alt="Experience" class="w-full h-[250px] sm:h-[300px] md:h-[350px] object-cover rounded-t-lg">
+  
+            <!-- Like Button -->
+            <button (click)="toggleLike(card)" class="absolute top-4 right-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" [class.text-red-500]="card.isLiked" [class.text-gray-300]="!card.isLiked" fill="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
+  
+            <!-- Label (optional) -->
+            <span *ngIf="card.label" class="flex flex-row items-center gap-2 justify-center absolute top-4 left-4 bg-white font-['Montserrat'] font-[600] text-[8px] px-3 py-1 rounded-xl">
+                <img src="assets/fire.svg" alt="Fire" class="object-cover">
+              {{ card.label }}
+            </span>
+  
+            <!-- Card Details -->
+            <div class="p-2 sm:p-4">
+                <div class="flex flex-col sm:flex-row pr-2 items-center justify-between sm:justify-center">
+                    <h3 class="w-full sm:w-[70%] font-['Montserrat'] text-[#002542] font-[500] text-[13px] sm:text-[15px] mb-2 text-center sm:text-left">{{ card.title }}</h3>
+                    
+                    <button style="background-color: #002542;" class="w-full sm:w-[30%] p-2 rounded-3xl font-['Montserrat'] text-[#fff] font-[500] text-[11px] sm:text-[13px] mt-2 sm:mt-0">Book now</button>
+                </div>
+              <p class="font-['Montserrat'] text-[#888888] font-[500] text-[9px] sm:text-[11px] mb-1 sm:mb-2 text-center sm:text-left">by {{ card.author }}</p>
+              <p class="font-['Montserrat'] text-[#002542] font-[600] text-[10px] sm:text-[12px] mb-2 sm:mb-4 text-center sm:text-left">{{ card.date }} • Limited seats • {{ card.price }} onwards</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <button (click)="next()" class="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </div>

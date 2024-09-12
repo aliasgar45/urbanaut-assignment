@@ -1,0 +1,37 @@
+/* Ensures the container and cards take full width */
+.container {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.flex {
+    flex-wrap: nowrap;
+    /* Prevents cards from wrapping */
+}
+
+.overflow-hidden {
+    overflow-x: hidden;
+    /* Ensures horizontal overflow is hidden */
+}
+
+.relative {
+    position: relative;
+}
+
+.transition-transform {
+    transition: transform 0.3s ease-in-out;
+}
+
+button {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+}
+
+.absolute {
+    position: absolute;
+}

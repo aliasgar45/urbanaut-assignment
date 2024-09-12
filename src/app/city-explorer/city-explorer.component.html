@@ -1,0 +1,28 @@
+<div class="w-full px-4 py-8 bg-[#F5FFE0] flex flex-col lg:flex-row items-center justify-center">
+    <div class="w-full ml-[200px] lg:w-1/2 mb-16 lg:mb-0 lg:pr-8">
+      <div class="max-w-[400px] mx-auto lg:mx-0">
+        <h2 class="font-['Montserrat'] font-[400] text-[16px] sm:text-[18px] mb-2">Rather explore cities on your own?</h2>
+      <h1 class="font-['Source_Serif_Pro'] font-[300] text-[32px] sm:text-[44px] mb-4">Discover trusted recommendations from <em>real</em> locals.</h1>
+      <a href="https://urbanaut.app/" target="_blank" rel="noopener noreferrer">
+
+      <button class="bg-blue-500 mt-8 lg:mt-14 hover:bg-blue-600 text-white font-['Montserrat'] font-[600] text-[16px] sm:text-[18px] py-2 px-8 sm:px-14 rounded-md w-full sm:w-auto">
+        Explore cities
+      </button>
+      </a>
+      </div>
+    </div>
+    <div class="w-full lg:w-1/2 flex items-center justify-center">
+      <button (click)="prevCity()" class="text-2xl sm:text-3xl text-black z-10 mr-2 sm:mr-4">
+        &lt;
+      </button>
+      <div class="relative w-3/4 sm:w-auto">
+        <img [src]="currentCity.image" [alt]="currentCity.name" class="w-full h-auto rounded-lg rounded-t-[150px] sm:rounded-t-[300px]">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl sm:text-3xl text-white font-bold text-center">
+          {{ currentCity.name }}
+        </div>
+      </div>
+      <button (click)="nextCity()" class="text-2xl sm:text-3xl text-black z-10 ml-2 sm:ml-4">
+        &gt;
+      </button>
+    </div>
+  </div>
